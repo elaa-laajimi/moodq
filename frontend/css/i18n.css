@@ -1,0 +1,108 @@
+/* ===========================================================
+   Sélecteur de langue — topbar (app) et écran de connexion
+   Réutilise volontairement la classe .theme-mode-toggle déjà
+   stylée dans style.css pour rester visuellement cohérent.
+   =========================================================== */
+
+.moodq-lang-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.moodq-lang-flag {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.moodq-lang-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #fff;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(20, 30, 50, 0.12);
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  min-width: 170px;
+  z-index: 1000;
+}
+
+.moodq-lang-dropdown[hidden] {
+  display: none;
+}
+
+.moodq-lang-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: #1b2a3d;
+}
+
+.moodq-lang-option:hover {
+  background: #f3f6fb;
+}
+
+.moodq-lang-option.active {
+  font-weight: 600;
+  background: #eaf1ff;
+  color: #1e5a9e;
+}
+
+/* Support RTL (arabe) : le dropdown s'ouvre du côté opposé */
+[dir="rtl"] .moodq-lang-dropdown {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .moodq-lang-selector-login {
+  right: auto;
+  left: 24px;
+}
+
+[dir="rtl"] .moodq-lang-option {
+  flex-direction: row-reverse;
+}
+
+/* Variante pour l'écran de connexion : positionnée en haut à droite
+   du panneau gauche, au-dessus du formulaire. */
+.moodq-lang-selector-login {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.moodq-lang-selector-login .moodq-lang-toggle {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Le panneau de connexion doit être positionné pour que le
+   sélecteur ci-dessus s'ancre correctement. */
+.login-panel-left {
+  position: relative;
+}
+
+/* Dark mode : suit les variables déjà utilisées par le thème sombre
+   de l'app (adapté si vos noms de variables diffèrent). */
+[data-theme-mode="dark"] .moodq-lang-dropdown {
+  background: #1b2436;
+  border-color: #2c3a52;
+}
+
+[data-theme-mode="dark"] .moodq-lang-option {
+  color: #e6ecf5;
+}
+
+[data-theme-mode="dark"] .moodq-lang-option:hover {
+  background: #26324a;
+}
+
+[data-theme-mode="dark"] .moodq-lang-option.active {
+  background: #223354;
+  color: #8fb8ff;
+}
